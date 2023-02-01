@@ -1,0 +1,7 @@
+helloworld/bin
+helloworld/obj
+terraform/.terraform
+terraform/tfstate
+istio/tests
+ecr/.terraform
+ecr/.terraform.*

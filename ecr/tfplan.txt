@@ -1,0 +1,84 @@
+generated with [terraform show -no-color tfplan]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.ecr.aws_ecr_repository.ecr["brightside/dotnetapp"] will be created
+  + resource "aws_ecr_repository" "ecr" {
+      + arn                  = (known after apply)
+      + id                   = (known after apply)
+      + image_tag_mutability = "IMMUTABLE"
+      + name                 = "brightside/dotnetapp"
+      + registry_id          = (known after apply)
+      + repository_url       = (known after apply)
+      + tags                 = {
+          + "Environment" = "Dev"
+          + "Github"      = "aztechsol-helloworld"
+        }
+      + tags_all             = {
+          + "Environment" = "Dev"
+          + "Github"      = "aztechsol-helloworld"
+        }
+
+      + encryption_configuration {
+          + encryption_type = "KMS"
+          + kms_key         = (known after apply)
+        }
+
+      + image_scanning_configuration {
+          + scan_on_push = true
+        }
+    }
+
+  # module.ecr.aws_ecr_repository.ecr["brightside/dotnetweb"] will be destroyed
+  # (because key ["brightside/dotnetweb"] is not in for_each map)
+  - resource "aws_ecr_repository" "ecr" {
+      - arn                  = "arn:aws:ecr:eu-west-1:960049661466:repository/brightside/dotnetweb" -> null
+      - id                   = "brightside/dotnetweb" -> null
+      - image_tag_mutability = "IMMUTABLE" -> null
+      - name                 = "brightside/dotnetweb" -> null
+      - registry_id          = "960049661466" -> null
+      - repository_url       = "960049661466.dkr.ecr.eu-west-1.amazonaws.com/brightside/dotnetweb" -> null
+      - tags                 = {
+          - "Environment" = "Dev"
+          - "Github"      = "the-repo-name"
+        } -> null
+      - tags_all             = {
+          - "Environment" = "Dev"
+          - "Github"      = "the-repo-name"
+        } -> null
+
+      - encryption_configuration {
+          - encryption_type = "KMS" -> null
+          - kms_key         = "arn:aws:kms:eu-west-1:960049661466:key/74442ef5-58a5-46bf-9bea-b0ac2550cdb0" -> null
+        }
+
+      - image_scanning_configuration {
+          - scan_on_push = true -> null
+        }
+    }
+
+  # module.ecr.aws_ecr_repository.ecr["brightside/helloworld"] will be updated in-place
+  ~ resource "aws_ecr_repository" "ecr" {
+        id                   = "brightside/helloworld"
+      ~ image_tag_mutability = "MUTABLE" -> "IMMUTABLE"
+        name                 = "brightside/helloworld"
+      ~ tags                 = {
+          ~ "Github"      = "the-repo-name" -> "aztechsol-helloworld"
+            # (1 unchanged element hidden)
+        }
+      ~ tags_all             = {
+          ~ "Github"      = "the-repo-name" -> "aztechsol-helloworld"
+            # (1 unchanged element hidden)
+        }
+        # (3 unchanged attributes hidden)
+
+        # (2 unchanged blocks hidden)
+    }
+
+Plan: 1 to add, 1 to change, 1 to destroy.
